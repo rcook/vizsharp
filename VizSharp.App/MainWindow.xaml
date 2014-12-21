@@ -17,7 +17,7 @@
                       VerticalAlignment="Stretch"/>
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal">
-            <Button Content="Button0" Width="75"/>
+            <Button Content="Button0" Width="75" Click="Button_Click"/>
             <Button Content="Button1" Width="75"/>
         </StackPanel>
     </Grid>

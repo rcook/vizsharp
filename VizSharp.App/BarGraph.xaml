@@ -12,7 +12,6 @@
              VerticalAlignment="Stretch">
         <Canvas x:Name="canvas"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                SizeChanged="canvas_SizeChanged"/>
+                VerticalAlignment="Stretch"/>
     </Viewbox>
 </UserControl>

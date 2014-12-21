@@ -1,5 +1,6 @@
 ﻿namespace VizSharp.App
 {
+    using System.Collections.Immutable;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -7,27 +8,50 @@
 
     public partial class BarGraph : UserControl
     {
+        private const double CanvasHeight = 256.0d;
+        private const double LineThickness = 3.0d;
+        private const double LineOffset = 1.0d;
+        private Line[] m_lines;
+
         public BarGraph()
         {
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public void SetValues(ImmutableArray<byte> values)
         {
-            canvas.Width = 100.0d;
-            canvas.Height = 100.0d;
+            if (m_lines == null || m_lines.Length != values.Length)
+            {
+                CreateLines(values);
+            }
+
+            for (var i = 0; i < m_lines.Length; ++i)
+            {
+                m_lines[i].Y2 = CanvasHeight - values[i];
+            }
         }
 
-        private void canvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var line = new Line();
-            line.X1 = 0.0d;
-            line.X2 = canvas.ActualWidth;
-            line.Y1 = 0.0d;
-            line.Y2 = canvas.ActualHeight;
-            line.Stroke = Brushes.Red;
-            line.StrokeThickness = 1.0d;
-            canvas.Children.Add(line);
+            canvas.Height = CanvasHeight;
+        }
+
+        private void CreateLines(ImmutableArray<byte> values)
+        {
+            canvas.Width = LineThickness * values.Length;
+            canvas.Children.Clear();
+            m_lines = new Line[values.Length];
+            for (var i = 0; i < m_lines.Length; ++i)
+            {
+                var line = new Line();
+                line.Y1 = CanvasHeight;
+                line.X1 = line.X2 = LineThickness * i + LineOffset;
+                line.Stroke = Brushes.Red;
+                line.StrokeThickness = LineThickness;
+
+                m_lines[i] = line;
+                canvas.Children.Add(line);
+            }
         }
     }
 }
