@@ -104,6 +104,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VizSharp.Algorithms\VizSharp.Algorithms.csproj">
+      <Project>{39486926-4861-4055-a22a-875bfbe748a8}</Project>
+      <Name>VizSharp.Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VizSharp.Utilities\VizSharp.Utilities.csproj">
+      <Project>{20d2b1f7-1711-4e0e-9109-698ec1258d62}</Project>
+      <Name>VizSharp.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

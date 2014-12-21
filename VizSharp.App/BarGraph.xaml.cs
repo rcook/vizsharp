@@ -10,6 +10,7 @@
     {
         private const double CanvasHeight = 256.0d;
         private const double LineThickness = 3.0d;
+        private const double FudgeFactor = 2.0d;
         private const double LineOffset = 1.0d;
         private Line[] m_lines;
 
@@ -47,7 +48,7 @@
                 line.Y1 = CanvasHeight;
                 line.X1 = line.X2 = LineThickness * i + LineOffset;
                 line.Stroke = Brushes.Red;
-                line.StrokeThickness = LineThickness;
+                line.StrokeThickness = LineThickness + FudgeFactor;
 
                 m_lines[i] = line;
                 canvas.Children.Add(line);

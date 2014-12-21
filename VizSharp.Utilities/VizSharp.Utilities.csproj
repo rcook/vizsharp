@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ArrayExtensions.cs" />
     <Compile Include="FisherYates.cs" />
     <Compile Include="ImmutableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
